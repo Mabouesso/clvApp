@@ -18,7 +18,7 @@ class CreateConsultationsTable extends Migration
             $table->date('dateConsultation');
             $table->text('maladie');
             $table->text('diagnostic');
-            $table->text('recommandation');
+            $table->text('recommandations');
             $table->foreignId('patient_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

@@ -19,16 +19,19 @@ class CreatePatientsTable extends Migration
             $table->string('prenom')->nullable();
             $table->char('genre');
             $table->date('dateNaissance');
-            $table->string('lieuNaissance');
+            $table->text('lieuNaissance');
+            $table->text('adresse');
             $table->string('telephone1');
             $table->string('telephone2')->nullable();
+            $table->string('email')->nullable();
             $table->string('clan')->nullable();
             $table->string('clanPere')->nullable();
             $table->string('clanMere')->nullable();
-            $table->string('clanGrPere')->nullable();
-            $table->string('ville');
+            $table->string('clanGrdPere')->nullable();
             $table->string('pays');
+            $table->string('ville');
             $table->foreignId('village_id')->constrained();
+            // $table->unique(['nom','prenom', 'dateNaissance', 'lieuNaissance','telephone1', 'clan', 'village_id']);
             $table->timestamps();
         });
     }

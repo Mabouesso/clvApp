@@ -18,7 +18,6 @@ class CreateAffilliationsTable extends Migration
             $table->string('nom');
             $table->string('nature');
             $table->foreignId('patient_id')->constrained();
-            $table->timestamps();
         });
     }
 

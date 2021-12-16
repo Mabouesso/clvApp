@@ -9,6 +9,8 @@ class Affilliation extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function Patient()
     {
         return $this->belongsTo(Patient::class);
