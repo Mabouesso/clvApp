@@ -14,7 +14,7 @@ class VillageFactory extends Factory
     public function definition()
     {
         return [
-            'nom' => $this->faker->name
+            'nom' => $this->faker->city
         ];
     }
 }
