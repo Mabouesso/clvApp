@@ -30,3 +30,4 @@ class PatientTest extends TestCase
         $response->assertViewHasAll(["villes", "pays", "villages"]);
     }
 }
+d:
