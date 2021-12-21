@@ -9,7 +9,7 @@ class Patient extends Model
 {
     use HasFactory;
 
-    public function Affiliations()
+    public function Affilliations()
     {
         return $this->hasMany(Affilliation::class);
     }
@@ -19,7 +19,7 @@ class Patient extends Model
         return $this->belongsTo(Village::class);
     }
 
-    public function consultation()
+    public function consultations()
     {
         return $this->hasMany(Consultation::class);
     }

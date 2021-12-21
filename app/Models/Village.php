@@ -10,4 +10,9 @@ class Village extends Model
     use HasFactory;
 
     public $timestamps = false ;
+
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
 }
