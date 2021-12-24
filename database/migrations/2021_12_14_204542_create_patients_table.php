@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->date('dateNaissance');
             $table->text('lieuNaissance');
             $table->text('adresse');
-            $table->string('telephone1');
+            $table->string('telephone1')->unique();
             $table->string('telephone2')->nullable();
             $table->string('email')->nullable();
             $table->string('clan')->nullable();
@@ -31,7 +31,7 @@ class CreatePatientsTable extends Migration
             $table->string('pays');
             $table->string('ville');
             $table->foreignId('village_id')->constrained();
-            // $table->unique(['nom','prenom', 'dateNaissance', 'lieuNaissance','telephone1', 'clan', 'village_id']);
+            $table->unique(['nom','prenom', 'dateNaissance']);
             $table->timestamps();
         });
     }

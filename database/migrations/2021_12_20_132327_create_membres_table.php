@@ -15,8 +15,8 @@ class CreateMembresTable extends Migration
     {
         Schema::create('membres', function (Blueprint $table) {
             $table->id();
-            $table->date('dateAdhésion');
-            $table->double('fraisAdhésion');
+            $table->date('dateAdhesion');
+            $table->double('fraisAdhesion');
             $table->char('livretElu');
             $table->char('brochureElu');
             $table->foreignId('patient_id')->constrained();
