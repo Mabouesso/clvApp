@@ -14,7 +14,7 @@ class PatientComponent extends Component
         return view('livewire.patient-component');
     }
 
-    protected
+
     public function create()
     {
         $this->validate([
