@@ -16,7 +16,7 @@ class PatientcreatedTest extends TestCase
      *
      * @return void
      */
-
+    use RefreshDatabase;
 
     public function test_acceder_au_formulaire_ajout_d_un_patient()
     {
@@ -51,11 +51,11 @@ class PatientcreatedTest extends TestCase
         ->set('newPatient.nom', 'Barbara')
         ->set('newPatient.genre', '0')
         ->set('newPatient.dateNaissance', '1974/12/13')
-        ->set('newPatient.lieuNaissance', 'Pointe-Noire')
+        ->set('newPatient.lieuNaissance', 'Brazzaville')
         ->set('newPatient.adresse', '67 bis rue Nkouka Batéké')
         ->set('newPatient.telephone1', '03 500 02 00')
         ->set('newPatient.pays', 'Congo')
-        ->set('newPatient.ville', 'Brazzaville')
+        ->set('newPatient.ville', 'Mvoungouti')
         ->set('newPatient.village_id', '1')
         ->call('create');
 
@@ -84,7 +84,6 @@ class PatientcreatedTest extends TestCase
 
 
         Livewire::test(PatientComponent::class)
-        ->set('newPatient.nom', 'Nguvu')
         ->set('newPatient.genre', '')
         ->set('newPatient.village_id', '3')
         ->call('create')

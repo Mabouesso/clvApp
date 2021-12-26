@@ -3,7 +3,7 @@
 
 @section('contenu')
 
-<livewire:patients-comp />
+<livewire:patient-component />
 
 @endsection()
 

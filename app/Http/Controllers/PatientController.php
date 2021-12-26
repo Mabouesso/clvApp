@@ -26,4 +26,9 @@ class PatientController extends Controller
         ]
     );
     }
+
+    public function edite(Patient $patient)
+    {
+        
+    }
 }
