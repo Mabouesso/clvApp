@@ -13,6 +13,7 @@ class Patient extends Model
         'nom',
         'prenom',
         'genre',
+        'email',
         'dateNaissance',
         'lieuNaissance',
         'telephone1',

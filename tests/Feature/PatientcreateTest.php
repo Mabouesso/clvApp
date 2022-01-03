@@ -18,6 +18,8 @@ class PatientcreatedTest extends TestCase
      */
     use RefreshDatabase;
 
+    
+
     public function test_acceder_au_formulaire_ajout_d_un_patient()
     {
         // prepartion (les prerequis pour tester)
@@ -43,17 +45,16 @@ class PatientcreatedTest extends TestCase
     /** @test  */
     public function test_on_peut_ajouter_un_patient()
     {
+        
         $village = \App\Models\Village::factory()->create();
 
-        // dd($village);
         Livewire::test(PatientComponent::class)
-
         ->set('newPatient.nom', 'Barbara')
         ->set('newPatient.genre', '0')
         ->set('newPatient.dateNaissance', '1974/12/13')
         ->set('newPatient.lieuNaissance', 'Brazzaville')
         ->set('newPatient.adresse', '67 bis rue Nkouka Batéké')
-        ->set('newPatient.telephone1', '03 500 02 00')
+        ->set('newPatient.telephone1', '035000200')
         ->set('newPatient.pays', 'Congo')
         ->set('newPatient.ville', 'Mvoungouti')
         ->set('newPatient.village_id', '1')
@@ -191,6 +192,31 @@ class PatientcreatedTest extends TestCase
         ->call('create')
 
         ->assertHasErrors(['newPatient.telephone1' => 'required']);
+
+    }
+
+    public function test_a_l_ajout_d_un_patient_le_telephone_est_unique()
+    {
+        
+        \App\Models\Village::factory()->create();
+
+        \App\Models\Patient::factory()->create([
+            "telephone1" => "1234567890"
+        ]);
+        $this->withoutExceptionHandling();
+        Livewire::test(PatientComponent::class)
+        ->set('newPatient.nom', 'Barbara')
+        ->set('newPatient.genre', '0')
+        ->set('newPatient.dateNaissance', '1974/12/13')
+        ->set('newPatient.lieuNaissance', 'Brazzaville')
+        ->set('newPatient.adresse', '67 bis rue Nkouka Batéké')
+        ->set('newPatient.telephone1', '1234567890')
+        ->set('newPatient.pays', 'Congo')
+        ->set('newPatient.ville', 'Mvoungouti')
+        ->set('newPatient.village_id', '1')
+        ->call('create')
+        ->assertHasErrors(['newPatient.telephone1' => 'unique']);
+        $this->withoutExceptionHandling();
 
     }
 }
