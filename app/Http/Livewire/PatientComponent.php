@@ -11,9 +11,10 @@ class PatientComponent extends Component
 
     public function render()
     {
-        return view('livewire.patient-component');
+        return view('livewire.patient-component')
+                ->extends('layouts.master')
+                ->section('contenu');
     }
-
 
     public function create()
     {
@@ -23,15 +24,15 @@ class PatientComponent extends Component
             'newPatient.dateNaissance' =>'required',
             'newPatient.lieuNaissance' =>'required',
             'newPatient.adresse' =>'required',
-            'newPatient.telephone1' =>'required|unique:patients,telephone1',
-            'newPatient.email' =>'unique:patients,email',
+            'newPatient.telephone1' => 'required|unique:patients,telephone1',
+            'newPatient.email' => 'unique:patients,email',
             'newPatient.pays' =>'required',
             'newPatient.ville' =>'required',
             'newPatient.village_id' =>'required',
             ]);
-       
+
         Patient::create($this->newPatient);
-        
+
     }
 
     public function updatePatient(Patient $patient)
