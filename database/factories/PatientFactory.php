@@ -17,9 +17,7 @@ class PatientFactory extends Factory
             'nom' => $this->faker->firstName(),
             'prenom' => $this->faker->lastName(),
             'genre' => array_rand(['M', 'F'], 1),
-            'dateNaissance'=>$this->faker->dateTimeBetween("1980-01-01", "2010-12-30")->format('Y-m-d'),
-            // 'dateNaissance'=>$this->dateTimeBetween('-100 years', '-99 years')->format('Y-m-d'),
-
+            'dateNaissance'=>$this->dateTimeIntervalByAge(),
             'lieuNaissance' => $this->faker->city(),
             'adresse' => $this->faker->address(),
             'telephone1' => $this->faker->phoneNumber,
@@ -33,5 +31,12 @@ class PatientFactory extends Factory
             'village_id' => rand(1,20),
             'email' => $this->faker->unique()->safeEmail()
         ];
+    }
+
+    private function dateTimeIntervalByAge($minAge=10, $maxAge=90)
+    {
+        $minYear = (int) date('Y') - $minAge;
+        $maxYear = (int) date('Y') - $maxAge;
+        return $this->faker->dateTimeBetween( "$maxYear-12-31","$minYear-01-01")->format('Y-m-d');
     }
 }

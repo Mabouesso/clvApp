@@ -1,7 +1,6 @@
 <?php
 
 namespace Tests\Feature;
-
 use App\Http\Livewire\PatientComponent;
 use App\Models\Patient;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,7 +24,7 @@ class PatientcreatedTest extends TestCase
         // assertions
         $response = $this->get('/patient/create');
         $response->assertStatus(200);
-        $response->assertViewIs("patients.create");
+        $response->assertViewIs("patient.create");
     }
 
     /** @test  */

@@ -22,9 +22,9 @@ Route::get('/', function () {
 Route::get("/membre/create", [MembreController::class, 'create'])->name('membre.create');
 
 ############################  patient ##########################################
-Route::get("/patient/index", [PatientController::class, 'index'])->name('patient.index');
+Route::get("/patient", [PatientController::class, 'index'])->name('patient.index');
 Route::get("/patient/create", [PatientController::class, 'create'])->name('patient.create');
-Route::get("/patient/edite/id", [PatientController::class, 'edite'])->name('patient.edite');
+Route::get("/patient/edit/{patient}", [PatientController::class, 'edit'])->name('patient.edit');
 
 ############################  pays ##########################################
 

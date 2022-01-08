@@ -10,7 +10,7 @@ class PatientController extends Controller
 
     public function index()
     {
-        return view('patients.index');
+        return view('patient.index');
     }
 
 
@@ -19,18 +19,18 @@ class PatientController extends Controller
         $pays=[];
         $villes=[];
         $villages=[];
-        return view('patients.create',[
+        return view('patient.create',[
             'pays'=>$pays,
             'villes'=>$villes,
             'villages'=>$villages
-        ]
-    );
+            ]
+        );
     }
 
-    public function edite(Patient $patient)
+    public function edit(Patient $patient)
     {
-        return view('patient.edite', [
-            '$patient'=>$patient
+        return view('patient.edit', [
+            'patient'=>$patient
         ]);
     }
 }

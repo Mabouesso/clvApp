@@ -13,9 +13,31 @@ class PatientEditTest extends TestCase
      *
      * @return void
      */
-    public function test_acceder_au_formulaire_d_edition($patient)
+    use RefreshDatabase;
+    public function test_acceder_au_formulaire_d_edition()
     {
-        $response = $this->get('/patient/edit/$patient');
+        \App\Models\Village::factory()->create();
+        $patient = \App\Models\Patient::factory()->create([
+            "village_id"=>1
+        ]);
+        $response = $this->get("/patient/edit/".$patient->id);
         $response->assertStatus(200);
     }
+    public function test_le_patient_selectionne_pour_l_edition_correspond_bien_a_celui_renvoyer_par_la_vue()
+    {
+        \App\Models\Village::factory()->create();
+        $patient = \App\Models\Patient::factory()->create([
+            "village_id"=>1
+        ]);
+        $response = $this->get("/patient/edit/".$patient->id);
+        $response->assertViewHas("patient", $patient);
+    }
+    public function test_on_mettre_a_jour_les_information_d_un_patient()
+    {
+        \App\Models\Village::factory()->create();
+        $patient = \App\Models\Patient::factory()->create([
+            "village_id"=>1
+        ]);
+    }
+
 }

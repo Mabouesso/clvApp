@@ -5,18 +5,16 @@ namespace App\Http\Livewire;
 use App\Models\Patient;
 use Livewire\Component;
 
-class PatientComponent extends Component
+class Edit extends Component
 {
-    public $newPatient = [];
+    public $patient = [];
 
     public function render()
     {
-        return view('livewire.patient-component')
-                ->extends('layouts.master')
-                ->section('contenu');
+        return view('livewire.patient.edit');
     }
 
-    public function create()
+    public function update()
     {
         $this->validate([
             'newPatient.genre' =>'required',
@@ -35,8 +33,4 @@ class PatientComponent extends Component
 
     }
 
-    public function updatePatient(Patient $patient)
-    {
-
-    }
 }
